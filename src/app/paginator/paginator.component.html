@@ -1,0 +1,12 @@
+<div class="wrapper">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" *ngIf="pagination?.hasPrevPage" (click)="prevClicked()">Previous</a>
+      </li>
+      <li class="page-item" [ngClass]="currentPage==i+1?'active':'none'" *ngFor="let item of arr;let i=index"
+        (click)="onClick(i+1)"><a class="page-link">{{i+1}}</a>
+      </li>
+      <li class="page-item"><a class="page-link" *ngIf="pagination?.hasNextPage" (click)="nextClicked()">Next</a></li>
+    </ul>
+  </nav>
+</div>

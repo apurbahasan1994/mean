@@ -1,0 +1,40 @@
+<!-- <mat-accordion multi="true" *ngIf="posts.length > 0">
+  <mat-expansion-panel *ngFor="let post of posts">
+    <mat-expansion-panel-header>
+      {{ post.title }}
+    </mat-expansion-panel-header>
+    <div class="post-image">
+      <img [src]="post.imagePath" style="width:200px;height:200px">
+    </div>
+    <br>
+    <p>{{ post.content }}</p>
+    <mat-action-row>
+      <a mat-button color="primary" [routerLink]="['/edit', post.id]">EDIT</a>
+      <button mat-button color="warn" (click)="onDelete(post.id)">DELETE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="info-text mat-body-1" *ngIf="posts.length <= 0">No posts added yet!</p>
+<app-spinner *ngIf="loader"></app-spinner> -->
+
+
+
+<div class="container mx-auto mt-4">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let post of posts">
+      <div class="card" style="width: 18rem;">
+        <img [src]="post.imagePath" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.content}}</p>
+          <a mat-button color="primary" [routerLink]="['/edit', post.id]">EDIT</a>
+          <button mat-button color="warn" (click)="onDelete(post.id)">DELETE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <app-paginator [pagination]="pagination" (paginationButtonClicked)="onClick($event)" *ngIf="posts.length>0">
+  </app-paginator>
+</div>

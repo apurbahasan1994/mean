@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="d-flex justify-content-center h-100">
+    <div class="card" [ngStyle]="{'height': previewimage && form.get('image').valid ? '500px':'430px' }">
+      <div class="card-header">
+        <h3>Create new Posts</h3>
+        <div class="d-flex justify-content-end social_icon">
+          <span><i class="fab fa-facebook-square"></i></span>
+          <span><i class="fab fa-google-plus-square"></i></span>
+          <span><i class="fab fa-twitter-square"></i></span>
+        </div>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="form" (submit)="onSubmit()">
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Title" name="title" [formControlName]="'title'">
+
+          </div>
+          <div class="input-group form-group" *ngIf="previewimage!=='' && previewimage && form.get('image').valid">
+            <img id="preview" style="height: 50px;width:50px;" [src]="previewimage">
+          </div>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="file" class="form-control" #filepicker (change)="onFilePick($event)">
+
+          </div>
+          <div class="input-group form-group">
+
+            <textarea class="form-control" rows="5" placeholder="Content" name="content"
+              [formControlName]="'content'"></textarea>
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Submit" class="btn float-right login_btn">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
